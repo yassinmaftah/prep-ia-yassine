@@ -1,14 +1,13 @@
-from src.utils import load_csv, filter_by_min_score, average_score, summarize
+from src.dataset import CsvDataset
 
 if __name__ == "__main__":
-    records = load_csv("data/sample.csv")
-    print(f"Chargé {len(records)} enregistrements.")
-
-    filtered = filter_by_min_score(records, 10)
-    print(f"Filtré {len(filtered)} enregistrements avec un score >= 10.")
-
-    avg = average_score(filtered)
-    print(f"Moyenne des scores: {avg:.2f}")
-
-    summary = summarize(records)
-    print(f"Résumé: {summary}")
+    print("--- Démarrage du pipeline POO ---")
+    
+    dataset = CsvDataset("Sample Data")
+    dataset.load_from_csv("data/sample.csv")
+    
+    print(dataset)
+    print(f"the resume: {dataset.summary()}")
+    
+    passed = dataset.filter_by_column('score', 10)
+    print(f"Admis (score >= 10): {len(passed)}")

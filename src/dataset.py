@@ -43,3 +43,9 @@ class CsvDataset(Dataset):
 
     def filter_by_column(self, column: str, min_value: float) -> list[dict]:        
         return [row for row in self._records if float(row[column]) >= min_value]
+
+
+class Str()
+{
+
+}
